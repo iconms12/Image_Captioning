@@ -48,25 +48,29 @@ Image Captioning이라는 기술을 구현하기 위해 CNN(Convolutional Neural
 
 2. 현재 이미지 학습에 사용하는 이미지 데이터는 1만여 개 텍스트 문장은 5만여 개이다. 이러한 데이터를 만들어내기 위해서는 기존 영어로 되어있는 문장 데이터들의 경우 번역기를 돌려야 하고, 아니라면 직접 손수 번역하여 데이터를 만들어야 하는데 이러한 데이터를 만들기에는 너무나 많은 시간이 소모가 된다. 또한 데이 현재의 데이터로도 100번의 학습 시 소요되는 시간은 1000분이다. 17시간이 소모된다. 유의미한 학습을 진행하기 위해선 수천 번의 학습이 필요한데 이보다 많은 데이터를 학습 시 소요되는 시간이 증가하였기에 대학교 내 GPU 사용 신청서를 제출하였다.
 
-<img src='./img/1.jpg' width="80" />
+![picture](https://github.com/iconms12/Image_Captioning/tree/master/img/1.jpg)
 
 3. 해당 이미지를 테스트 하였을 때 가장 적합하게 출력된 문장은
 
 <img src='./img/1.5jpg' width="80" />
-
+![picture](https://github.com/iconms12/Image_Captioning/tree/master/img/1.5.jpg)
 이다 하지만 이러한 문장의 loss 값은 여러 가지가 나오는데. 적게는 1.38에서 많게는 2.1까지 같은 문장이라도 나오는 loss 값이 다르게 나온다는 것이다. 딥러닝을 배울 때 loss를 평가 지표로 사용하는 것에 익숙해져 있었기에 새로운 평가 지표를 찾는데 많은 어려움을 겪었고 결국 여러 인공지능 번역기에 사용하는 Bleu를 평가 지표로 사용하게 되었다.
 
 <img src='./img/2.jpg' width="80" />
+
+![picture2](https://github.com/iconms12/Image_Captioning/tree/master/img/2.jpg)
 
 예측 문장과 실제 문장에 들어가는 것은 해당 문장의 형태소 단위로 토큰화를 시도한 1차원 벡터 형태의 값이 들어간다.
 즉 “아이는 절벽의 가장자리 근처에 서 있습니다.”라는 문장을
 “['아이', '는', '절벽', '의', '가장자리', '근처', '에', '서', '있습니다', '.']”로 변환한다는 것이다.
 또한 BLEU를 사용할 때 각 단어의 조합으로 1-gram , 2-gram과 같은 단위로 사용하는데 이는 N 개의 단어에 대한 순서쌍들이 얼마나 겹치는지를 측정한다. 이러한 과정을 넣고 연산을 한다면
 
+![picture](https://github.com/iconms12/Image_Captioning/tree/master/img/3.jpg)
 <img src='./img/3.jpg' width="80" />
 
 이 되는 것이다. 이러한 연산을 1-gram~ 4-gram까지 총 4번을 수행하여 이들에 대한 곱셈 연산을 수행하는 데 결론적으로 만들어지는 문장의 길이가 짧아 4-gram 이상의 순서쌍 조합은 0이 나오므로 모든 문장에 대한 확률 값이 결국 0이 돼버리는 문제가 발생하였다. 이를 해결하기 위해 가중치를 주어 4-gram은 연산에서 제외하였다. 즉,
 
+![picture](https://github.com/iconms12/Image_Captioning/tree/master/img/4.jpg)
 <img src='./img/4.jpg' width="80" />
 
 이 되는 것이다. 이러한 연산을 행했을 때 55%의 정확도를 보여주어 이를 평가지표로 선택하게 되었다.
