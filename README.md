@@ -108,7 +108,8 @@ Image Captioning이라는 기술을 구현하기 위해 CNN(Convolutional Neural
 
 <img src='./img/4.JPG'/>
 
-이 되는 것이다. 평가지표와 optimizer에 관한 자세한사항은 Server폴더를 참고 하길 바란다.
+이 되는 것이다. 평가지표와 optimizer에 관한 자세한사항은 [Server](https://github.com/iconms12/Image_Captioning/tree/master/server)
+폴더를 참고 하길 바란다.
 
 ## 프로젝트 개발 결과물 소개 (+ 다이어그램)
 <p align="center"><img src="1.JPG" width="640"\></p>
@@ -125,7 +126,7 @@ Image Captioning이라는 기술을 구현하기 위해 CNN(Convolutional Neural
 
 ### server와 client를 나눠 각각 폴더안의 데이터를 넣어 사용하여도 무관하며
 ### 하나의 컴퓨터에 server와 detection을 같이넣어 구동하여도 문제없다.
-### 결과물의 자세한 사용방법은 github의 각 server와 detection 폴더의 README.md를 참조하면 나와있으며
+### 결과물의 자세한 사용방법은 github의 각 [Server](https://github.com/iconms12/Image_Captioning/tree/master/server)와 [object_detect](https://github.com/iconms12/Image_Captioning/tree/master/object_detect) 폴더의 README.md를 참조하면 나와있으며
 ### 당연하지만 webcam이 필요하다. 
 <br>
 
