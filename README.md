@@ -1,4 +1,4 @@
-# Image_Captioning 2020년 1학기 한림대학교 빅데이터 CapstoneDesign
+# Image_Captioning 2020년 2학기 한림대학교 빅데이터 CapstoneDesign
 - 20155129 빅데이터 공학과 손민성
 - 20143505 디스플레이 학과 김준영 
 
